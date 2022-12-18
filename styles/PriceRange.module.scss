@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+.subContainer {
+    margin-right: 1rem;
+}
+
+.input {
+    border: none;
+    background-color: white;
+    width: 75px;
+}
+
+.label {
+    margin-right: 1rem;
+}

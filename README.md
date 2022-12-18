@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ask Phill Assignment
 
 ## Getting Started
 
-First, run the development server:
+-   Clone/copy this repo and run `nmp install`
+-   Start developement server with `npm run dev`
+-   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   Next.js
+-   SWR
+-   Styled modules
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## API
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The api exposes 2 entry points :
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+##### GET `/shoes`
 
-## Learn More
+returns all the products in the catalogue as a json file
 
-To learn more about Next.js, take a look at the following resources:
+##### GET `/shoes/[params]`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+accepts a lits of params and returns a list of filteres products.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-   **color** (optional) : sort product by colors, ex :
+    -   get white products : `/shoes/color=white`
+    -   get black and white products : `/shoes/color=black,white`
+-   **category** (optional) : sort produtcs by categories
+    -   get Sandals : `/shoes/category=sandals`
+    -   get Sandals and Flata : `/shoes/category=sandals,flats`
+-   **price** (optional): sort produtcs by price range `
+    -   get products between 0 and 1000 euros `/shoes/price=0,1000`
+-   **page** (optional): return the desired page for the filter query. if this params is not provided, it will return the first page
+    -   get page 3`/shoes/page=3`
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+All pararms can be added in a single query when joining them with `&`
+ex : get the white & green mid-heels that cost between 0 and 200 euros `api/shoes/color=white,green&category=mid-heels&price=0,200`
