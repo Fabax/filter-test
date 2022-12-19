@@ -9,7 +9,7 @@
 -   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ##### View online version
-- build and deployed here : https://filter-test-nine.vercel.app/
+- built and deployed here : https://filter-test-nine.vercel.app/
 
 ## Project requirements
 - We need to have the possibility to filter 
@@ -22,19 +22,23 @@
 - The user should be able to combine the filter parameters together 
 
 ## Stack
+Next.js, SWR, Styled modules (scss)
 
--   Next.js, SWR, Styled modules
+
+## Styling
+Although styling was not required. Some basic style was applied using styles modules and BEM methodology whenever possible.
+
+## Code formating
+Here are the tools I used to format my code : 
+ESlint /  Prettier / Post css sorting 
 
 ## API
-
 The api exposes 2 entry points :
 
-##### GET `/`
-
+##### GET `/shoes`
 Return the firlt 12 product unfiltered + pagination
 
 ##### GET `/shoes/[params]`
-
 Accepts a lits of params and returns a list of filteres products + pagination.
 
 -   **colors** (optional) : sort product by colors, ex :
@@ -50,3 +54,6 @@ Accepts a lits of params and returns a list of filteres products + pagination.
 
 All pararms can be added in a single query when joining them with `&`
 ex : get the white & green mid-heels that cost between 0 and 200 euros `api/shoes/colors=white,green&categories=mid-heels&pricerange=0,200`
+
+##### Response
+The API returns an array containing the product list for the page and the max page amount for the query
