@@ -12,7 +12,7 @@ import initialState from '../data/initalState';
 export default function FilterPage() {
     const { filterState, dispatch } = useFilterReducer(initialState);
     const [apiUrl, setApiUrl] = useState('');
-    const [previousApiUrl, setPreviousApiUrl] = useState('');
+    const previousApiUrl = useRef('');
     const router = useRouter();
 
     const { data, isLoading, error } = useProducts(apiUrl);
@@ -55,7 +55,7 @@ export default function FilterPage() {
         }
 
         const url = urlArgs.join('&');
-        setPreviousApiUrl(apiUrl)
+        previousApiUrl.current = apiUrl;
 
         setApiUrl(url);
     }, [filterState]);
@@ -64,7 +64,7 @@ export default function FilterPage() {
         if (apiUrl !== '') {
             router.push(`/${apiUrl}`, undefined, { shallow: true });
         } else {
-            if (previousApiUrl !== '') {
+            if (previousApiUrl.current !== '') {
                 router.push(`/${apiUrl}`, undefined, { shallow: true });
             }
         }
